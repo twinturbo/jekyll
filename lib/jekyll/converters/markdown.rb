@@ -19,7 +19,9 @@ module Jekyll
             # convert extensions array to hash form
             #    [ 'ext_a',        'ext_b',        'ext_c'        ]
             # => { :ext_a => true, :ext_b => true, :ext_c => true }
+            
             redcarpet_extensions = Hash[@config['redcarpet']['extensions'].map { |e| [e.to_sym, true] }]
+            puts redcarpet_extensions
             redcarpet_render_options = Hash[@config['redcarpet']['render_options'].map { |e| [e.to_sym, true] }] rescue {}
 
             custom_redcarpet_class = Class.new(Redcarpet::Render::HTML)
@@ -88,7 +90,7 @@ module Jekyll
           end
         else
           STDERR.puts "Invalid Markdown processor: #{@config['markdown']}"
-          STDERR.puts "  Valid options are [ maruku | rdiscount | kramdown ]"
+          STDERR.puts "  Valid options are [ maruku | rdiscount | kramdown | redcarpet ]"
           raise FatalException.new("Invalid Markdown process: #{@config['markdown']}")
       end
       @setup = true
