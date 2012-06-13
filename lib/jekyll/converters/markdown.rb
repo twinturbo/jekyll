@@ -21,7 +21,6 @@ module Jekyll
             # => { :ext_a => true, :ext_b => true, :ext_c => true }
             
             redcarpet_extensions = Hash[@config['redcarpet']['extensions'].map { |e| [e.to_sym, true] }]
-            puts redcarpet_extensions
             redcarpet_render_options = Hash[@config['redcarpet']['render_options'].map { |e| [e.to_sym, true] }] rescue {}
 
             custom_redcarpet_class = Class.new(Redcarpet::Render::HTML)
